@@ -1,4 +1,4 @@
-import { FolderCode, Github, Linkedin, Twitter, Mail, Facebook } from "lucide-react";
+import { FolderCode, Github, Mail, Facebook } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
