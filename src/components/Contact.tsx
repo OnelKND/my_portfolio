@@ -56,14 +56,26 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Vérifier la longueur du message
+    const fullMessage = `Nom: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`;
+    const mailtoLength = `mailto:angekounde3@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(fullMessage)}`.length;
+
+    if (mailtoLength > 2000) {
+      alert(`Votre message est trop long (${mailtoLength} caractères). La limite est de 2000 caractères. Veuillez le raccourcir.`);
+      return;
+    }
+
     // Créer le lien mailto avec les infos du formulaire
-    const mailtoLink = `mailto:angekounde3@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Nom: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
+    const mailtoLink = `mailto:angekounde3@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(fullMessage)}`;
 
     // Ouvrir le client mail
     window.location.href = mailtoLink;
 
-    // Reset le formulaire
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    // Demander confirmation avant de reset
+    const userConfirmed = confirm("Votre client mail va s'ouvrir. Cliquez sur OK pour effacer le formulaire, ou Annuler pour le garder.");
+    if (userConfirmed) {
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    }
   };
 
   return (

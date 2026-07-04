@@ -13,7 +13,6 @@ interface Project {
   title: string;
   description: string;
   technologies: string[];
-  demoLink: string;
   repoLink: string;
   image: string;
 }
@@ -22,27 +21,24 @@ const projects: Project[] = [
   {
     id: 1,
     title: "Abonnement Newsletter",
-    description: "Application d'inscription et de gestion d'une newsletter avec envoi automatisé d'e-mails.",
+    description: "Application d’inscription et de gestion d’une newsletter avec envoi automatisé d’e-mails.",
     technologies: ["React", "Node.js", "Tailwind CSS", "MailChimp"],
-    demoLink: "#",
     repoLink: "https://github.com/OnelKND/newsletter",
     image: img1,
   },
   {
     id: 2,
-    title: "Gestion d'utilisateurs",
+    title: "Gestion d’utilisateurs",
     description: "Système de gestion des utilisateurs avec authentification et administration.",
     technologies: ["Django", "Python", "Html", "DaisyUI"],
-    demoLink: "#",
     repoLink: "https://github.com/OnelKND/django_app",
     image: img2,
   },
   {
     id: 3,
     title: "Green Cycle",
-    description: "Plateforme de gestion et suivi d'un projet de recyclage et d'écologie.",
+    description: "Plateforme de gestion et suivi d’un projet de recyclage et d’écologie.",
     technologies: ["MySQL", "PHP", "CSS"],
-    demoLink: "#",
     repoLink: "https://github.com/OnelKND/Green_Cycle",
     image: img3,
   },
@@ -51,15 +47,14 @@ const projects: Project[] = [
     title: "Gest_Finance",
     description: "Application de gestion financière pour suivre revenus et dépenses.",
     technologies: ["Typescript", "DaisyUI", "TailwindCSS"],
-    demoLink: "#",
     repoLink: "https://github.com/OnelKND/Gest_Finance",
     image: img4,
   },
   {
     id: 5,
     title: "Nel_Dev AI",
-    description: "Assistant IA permettant d’analyser un site web à partir d’une URL et de poser des questions sur son contenu.",    technologies: ["NextJS", "DaisyUI", "MetaLLama"],
-    demoLink: "#",
+    description: "Assistant IA permettant d’analyser un site web à partir d’une URL et de poser des questions sur son contenu.",
+    technologies: ["NextJS", "DaisyUI", "MetaLLama"],
     repoLink: "https://github.com/OnelKND/ia_perso",
     image: img5,
   },
