@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Mail, Phone, MapPin, Github, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Send } from "lucide-react";
 import Title from "./Title";
+import { useState } from "react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,8 +9,6 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
 
   const contactInfo = [
     {
@@ -41,7 +39,7 @@ const Contact = () => {
     },
     {
       icon: <Phone className="w-5 h-5" />,
-      label: "Whatsapp",
+      label: "WhatsApp",
       href: "https://wa.me/22968266565"
     }
   ];
@@ -55,41 +53,17 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("loading");
-    setErrorMessage("");
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: `${formData.subject}\n\n${formData.message}`,
-        }),
-      });
+    // Créer le lien mailto avec les infos du formulaire
+    const mailtoLink = `mailto:angekounde3@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Nom: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
 
-      const data = await response.json();
+    // Ouvrir le client mail
+    window.location.href = mailtoLink;
 
-      if (response.ok && data.success) {
-        setStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-
-        // Reset status after 5 seconds
-        setTimeout(() => setStatus("idle"), 5000);
-      } else {
-        setStatus("error");
-        setErrorMessage(data.error || "Une erreur est survenue");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setStatus("error");
-      setErrorMessage("Impossible de se connecter au serveur");
-    }
+    // Reset le formulaire
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
@@ -98,7 +72,7 @@ const Contact = () => {
         <Title title="Me contacter" />
 
         <p className="text-center text-base-content/70 mb-12 max-w-2xl mx-auto">
-          Vous zvez un projet en tête ou vous voulez simplement dire bonjour ?
+          Vous avez un projet en tête ou vous voulez simplement dire bonjour ?
           N'hésitez pas à me contacter, je répondrai dans les plus brefs délais.
         </p>
 
@@ -150,22 +124,6 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="bg-base-100 p-8 rounded-2xl shadow-lg">
             <h3 className="text-2xl font-bold mb-6">Envoyer un message</h3>
-
-            {/* Success Message */}
-            {status === "success" && (
-              <div className="alert alert-success mb-6">
-                <CheckCircle className="w-5 h-5" />
-                <span>Message envoyé avec succès ! Je vous répondrai bientôt par mail.</span>
-              </div>
-            )}
-
-            {/* Error Message */}
-            {status === "error" && (
-              <div className="alert alert-error mb-6">
-                <AlertCircle className="w-5 h-5" />
-                <span>{errorMessage}</span>
-              </div>
-            )}
 
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-4">
@@ -231,16 +189,9 @@ const Contact = () => {
               <button
                 type="submit"
                 className="btn btn-secondary w-full"
-                disabled={status === "loading"}
               >
-                {status === "loading" ? (
-                  <span className="loading loading-spinner loading-sm"></span>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    Envoyer le message
-                  </>
-                )}
+                <Send className="w-5 h-5" />
+                Ouvrir mon client mail
               </button>
             </form>
           </div>
