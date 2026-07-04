@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { Github, ChevronLeft, ChevronRight } from "lucide-react";
 import Title from "./Title";
 
 import img1 from "../assets/projects/1.png";
@@ -7,7 +7,6 @@ import img2 from "../assets/projects/2.png";
 import img3 from "../assets/projects/3.png";
 import img4 from "../assets/projects/4.png";
 import img5 from "../assets/projects/5.png";
-import img6 from "../assets/projects/6.png";
 
 interface Project {
   id: number;
@@ -19,68 +18,50 @@ interface Project {
   image: string;
 }
 
-// NOTE: Remplace ces données par tes vrais projets!
-// Pour chaque projet: nom, description courte (1-2 phrases), les techs utilisées, et les liens
 const projects: Project[] = [
   {
     id: 1,
-    title: "Gestionnaire de tâches",
-    description:
-      "Application web complète pour la gestion de projets et tâches. Fonctionnalités: tableaux Kanban, assignation de tâches, deadlines et notifications.",
-    technologies: ["React", "Node.js", "Tailwind CSS", "MongoDB"],
+    title: "Abonnement Newsletter",
+    description: "Application d'inscription et de gestion d'une newsletter avec envoi automatisé d'e-mails.",
+    technologies: ["React", "Node.js", "Tailwind CSS", "MailChimp"],
     demoLink: "#",
-    repoLink: "#",
+    repoLink: "https://github.com/OnelKND/newsletter",
     image: img1,
   },
   {
     id: 2,
-    title: "Plateforme E-commerce",
-    description:
-      "Boutique en ligne complète avec panier, paiement sécurisé, gestion des commandes et interface d'administration.",
-    technologies: ["Next.js", "TypeScript", "Prisma", "Stripe"],
+    title: "Gestion d'utilisateurs",
+    description: "Système de gestion des utilisateurs avec authentification et administration.",
+    technologies: ["Django", "Python", "Html", "DaisyUI"],
     demoLink: "#",
-    repoLink: "#",
+    repoLink: "https://github.com/OnelKND/django_app",
     image: img2,
   },
   {
     id: 3,
-    title: "Portfolio interactif",
-    description:
-      "Portfolio créatif avec animations fluides, design responsive et optimisation SEO pour un développeur.",
-    technologies: ["React", "Framer Motion", "Tailwind CSS"],
+    title: "Green Cycle",
+    description: "Plateforme de gestion et suivi d'un projet de recyclage et d'écologie.",
+    technologies: ["MySQL", "PHP", "CSS"],
     demoLink: "#",
-    repoLink: "#",
+    repoLink: "https://github.com/OnelKND/Green_Cycle",
     image: img3,
   },
   {
     id: 4,
-    title: "Application de Chat",
-    description:
-      "Application de messagerie temps réel avec salons privés, partage de fichiers et notifications en direct.",
-    technologies: ["React", "Socket.io", "Express.js", "MongoDB"],
+    title: "Gest_Finance",
+    description: "Application de gestion financière pour suivre revenus et dépenses.",
+    technologies: ["Typescript", "DaisyUI", "TailwindCSS"],
     demoLink: "#",
-    repoLink: "#",
+    repoLink: "https://github.com/OnelKND/Gest_Finance",
     image: img4,
   },
   {
     id: 5,
-    title: "Système de réservation",
-    description:
-      "Plateforme de réservation de salles de réunion avec calendrier interactif, gestion des utilisateurs et notifications.",
-    technologies: ["Next.js", "MongoDB", "Chakra UI", "Node.js"],
+    title: "Nel_Dev AI",
+    description: "Assistant IA permettant d’analyser un site web à partir d’une URL et de poser des questions sur son contenu.",    technologies: ["NextJS", "DaisyUI", "MetaLLama"],
     demoLink: "#",
-    repoLink: "#",
+    repoLink: "https://github.com/OnelKND/ia_perso",
     image: img5,
-  },
-  {
-    id: 6,
-    title: "API RESTful",
-    description:
-      "API backend robuste avec authentification JWT, documentation Swagger et gestion complète des données.",
-    technologies: ["Node.js", "Express", "PostgreSQL", "Docker"],
-    demoLink: "#",
-    repoLink: "#",
-    image: img6,
   },
 ];
 
@@ -133,7 +114,7 @@ const Projects = () => {
             >
               {/* Image */}
               <div className="relative h-48 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-base-200 to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-base-200/30 to-transparent z-10" />
                 <img
                   src={project.image}
                   alt={project.title}
@@ -165,21 +146,13 @@ const Projects = () => {
                 {/* Links */}
                 <div className="flex gap-3">
                   <a
-                    href={project.demoLink}
+                    href={project.repoLink}
                     className="btn btn-secondary btn-sm flex-1"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <ExternalLink className="w-4 h-4" />
-                    Demo
-                  </a>
-                  <a
-                    href={project.repoLink}
-                    className="btn btn-ghost btn-sm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
                     <Github className="w-4 h-4" />
+                    Voir sur GitHub
                   </a>
                 </div>
               </div>
