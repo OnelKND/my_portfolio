@@ -10,7 +10,6 @@ import imgprisma from "../assets/techno/prisma.png";
 import imgTAILWIND from "../assets/techno/tailwind.png";
 import imgphp from "../assets/techno/php.png";
 import imgnext from "../assets/techno/nextjs.png";
-import imgdjango from "../assets/techno/django.png"
 
 import { Code2, Database, Palette, Layers } from "lucide-react";
 
@@ -24,7 +23,6 @@ const skills = [
   { id: 7, name: "Node.js", image: imgNODE, category: "Backend" },
   { id: 8, name: "PHP", image: imgphp, category: "Backend" },
   { id: 9, name: "Prisma", image: imgprisma, category: "Backend" },
-  { id: 10,name:"Django", image: imgdjango, category: "Backend" },
   { id: 11,name:"WordPress", image: imgwordpress, category: "CMS" },
 
 
