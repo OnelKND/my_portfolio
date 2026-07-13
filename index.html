@@ -6,29 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="r9s1c0rqi_bYRM_OMyFGa0mcyTCxLVEfitw2dnt1k8Y" />
 
-    <title>NEL DEV | Développeur Web & Mobile</title>
+    <title>KOUNDE Ange-Onel (NEL DEV) | Développeur Web au Bénin - Cotonou</title>
 
     <!-- ✅ Meta SEO -->
-    <meta name="description" content="Portfolio de NEL DEV (KOUNDE Ange Onel), développeur web et mobile basé au Bénin. Création de sites performants, modernes et responsives." />
-    <meta name="keywords" content="Développeur Web, Développeur Mobile, React, JavaScript, HTML, CSS, Portfolio, Benin, NEL DEV, KOUNDE Ange Onel, Ange Onel Kounde, Developpeur Benin" />
+    <meta name="description" content="KOUNDE Ange-Onel (NEL DEV), développeur web full-stack basé à Cotonou, Bénin. 4 ans d'expérience en React, Next.js et Node.js. Sites vitrines, applications web et maintenance pour entreprises et particuliers au Bénin." />
+    <meta name="keywords" content="développeur web Bénin, développeur web Cotonou, développeur full-stack Bénin, KOUNDE Ange Onel, Ange Onel Kounde, NEL DEV, développeur React Bénin, développeur Node.js Bénin, création site web Bénin, développeur mobile Bénin" />
     <meta name="author" content="KOUNDE Ange Onel" />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://neldevportfolio.netlify.app/" />
+
+    <!-- ✅ Ciblage local -->
+    <meta name="geo.region" content="BJ" />
+    <meta name="geo.placename" content="Cotonou, Bénin" />
 
     <!-- ✅ Open Graph (pour le partage sur les réseaux) -->
-    <meta property="og:title" content="NEL DEV | Développeur Web & Mobile" />
-    <meta property="og:description" content="Découvrez le portfolio de KOUNDE Ange Onel (NEL DEV), développeur web et mobile au Bénin." />
+    <meta property="og:title" content="KOUNDE Ange-Onel (NEL DEV) | Développeur Web au Bénin" />
+    <meta property="og:description" content="Développeur web full-stack basé à Cotonou, Bénin. Découvrez mes projets, compétences et services de création de sites web modernes." />
     <meta property="og:image" content="https://neldevportfolio.netlify.app/og-image.jpg" />
     <meta property="og:url" content="https://neldevportfolio.netlify.app" />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
 
     <!-- ✅ Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="NEL DEV | Développeur Web & Mobile" />
-    <meta name="twitter:description" content="Portfolio de KOUNDE Ange Onel, développeur passionné par le web et le mobile." />
+    <meta name="twitter:title" content="KOUNDE Ange-Onel (NEL DEV) | Développeur Web au Bénin" />
+    <meta name="twitter:description" content="Portfolio de KOUNDE Ange Onel, développeur web full-stack basé à Cotonou, Bénin." />
     <meta name="twitter:image" content="https://neldevportfolio.netlify.app/og-image.jpg" />
+
+    <!-- ✅ Données structurées pour Google (identité + activité) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "KOUNDE Ange-Onel",
+        "alternateName": "NEL DEV",
+        "url": "https://neldevportfolio.netlify.app",
+        "image": "https://neldevportfolio.netlify.app/og-image.jpg",
+        "jobTitle": "Développeur Web Full-Stack",
+        "description": "Développeur web full-stack basé à Cotonou, Bénin, spécialisé en React, Next.js et Node.js.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cotonou",
+          "addressCountry": "BJ"
+        },
+        "sameAs": [
+          "https://github.com/OnelKND"
+        ],
+        "knowsAbout": ["React", "Next.js", "Node.js", "TypeScript", "Tailwind CSS", "PHP", "WordPress"]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Formulaire statique pour la détection par Netlify Forms au build (non affiché) -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

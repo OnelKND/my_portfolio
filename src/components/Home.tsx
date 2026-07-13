@@ -71,7 +71,7 @@ const Home = () => {
             </h1>
 
             <p className="text-lg sm:text-xl text-base-content/70 max-w-xl mx-auto lg:mx-0">
-              Développeur Full-Stack passionné avec{" "}
+              Développeur web full-stack basé à Cotonou, Bénin, avec{" "}
               <span className="font-semibold text-primary">4 ans d'expérience</span>.
               Je crée des applications web modernes, performantes et orientées utilisateur.
             </p>

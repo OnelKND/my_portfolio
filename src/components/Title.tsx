@@ -3,9 +3,9 @@ interface TitleProps {
 }
 const Title = ({title} : TitleProps) => {
   return (
-    <h1 className="uppercase font-bold mb-5 text-center text-3xl">
+    <h2 className="uppercase font-bold mb-5 text-center text-3xl">
         {title}
-    </h1>
+    </h2>
   )
 }
 

@@ -1,6 +1,13 @@
-import { Mail, Phone, MapPin, Github, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Send, CheckCircle, AlertCircle } from "lucide-react";
 import Title from "./Title";
 import { useState } from "react";
+
+type SubmitStatus = "idle" | "sending" | "success" | "error";
+
+const encodeFormData = (data: Record<string, string>) =>
+  Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&");
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +16,7 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [status, setStatus] = useState<SubmitStatus>("idle");
 
   const contactInfo = [
     {
@@ -53,28 +61,26 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus("sending");
 
-    // Vérifier la longueur du message
-    const fullMessage = `Nom: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`;
-    const mailtoLength = `mailto:angekounde3@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(fullMessage)}`.length;
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodeFormData({ "form-name": "contact", ...formData }),
+      });
 
-    if (mailtoLength > 2000) {
-      alert(`Votre message est trop long (${mailtoLength} caractères). La limite est de 2000 caractères. Veuillez le raccourcir.`);
-      return;
-    }
+      if (!response.ok) {
+        throw new Error("Réponse invalide du serveur");
+      }
 
-    // Créer le lien mailto avec les infos du formulaire
-    const mailtoLink = `mailto:angekounde3@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(fullMessage)}`;
-
-    // Ouvrir le client mail
-    window.location.href = mailtoLink;
-
-    // Demander confirmation avant de reset
-    const userConfirmed = confirm("Votre client mail va s'ouvrir. Cliquez sur OK pour effacer le formulaire, ou Annuler pour le garder.");
-    if (userConfirmed) {
+      setStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (err) {
+      console.error("Contact form error:", err);
+      setStatus("error");
     }
   };
 
@@ -137,7 +143,33 @@ const Contact = () => {
           <div className="bg-base-100 p-8 rounded-2xl shadow-lg">
             <h3 className="text-2xl font-bold mb-6">Envoyer un message</h3>
 
-            <form className="space-y-4" onSubmit={handleSubmit}>
+            {status === "success" ? (
+              <div className="alert alert-success">
+                <CheckCircle className="w-5 h-5" />
+                <span>Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.</span>
+              </div>
+            ) : (
+            <form
+              name="contact"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              className="space-y-4"
+              onSubmit={handleSubmit}
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <p hidden>
+                <label>
+                  Ne pas remplir : <input name="bot-field" />
+                </label>
+              </p>
+
+              {status === "error" && (
+                <div className="alert alert-error">
+                  <AlertCircle className="w-5 h-5" />
+                  <span>Une erreur est survenue. Réessayez ou écrivez-moi directement par email.</span>
+                </div>
+              )}
+
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="form-control">
                   <label className="label">
@@ -176,7 +208,7 @@ const Contact = () => {
                 <input
                   type="text"
                   name="subject"
-                  placeholder="Sujet de ton message"
+                  placeholder="Sujet de votre message"
                   className="input input-bordered w-full"
                   value={formData.subject}
                   onChange={handleChange}
@@ -190,7 +222,7 @@ const Contact = () => {
                 </label>
                 <textarea
                   name="message"
-                  placeholder="Écris ton message ici..."
+                  placeholder="Écrivez votre message ici..."
                   className="textarea textarea-bordered h-40"
                   value={formData.message}
                   onChange={handleChange}
@@ -201,11 +233,19 @@ const Contact = () => {
               <button
                 type="submit"
                 className="btn btn-secondary w-full"
+                disabled={status === "sending"}
               >
-                <Send className="w-5 h-5" />
-                Ouvrir mon client mail
+                {status === "sending" ? (
+                  <span className="loading loading-spinner loading-sm"></span>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Envoyer le message
+                  </>
+                )}
               </button>
             </form>
+            )}
           </div>
         </div>
       </div>
