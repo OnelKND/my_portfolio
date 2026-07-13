@@ -48,7 +48,7 @@ const About = () => {
 
               <img
                 src={img}
-                alt="NEL DEV - Développeur Full-Stack"
+                alt="KOUNDE Ange-Onel - Développeur Full-Stack"
                 className="relative w-80 h-96 lg:w-96 lg:h-[450px] object-cover rounded-2xl shadow-2xl border-4 border-secondary/30"
               />
             </div>

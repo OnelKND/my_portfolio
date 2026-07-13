@@ -1,14 +1,5 @@
 import { useState } from "react";
-import {
-  FolderCode,
-  Menu,
-  X,
-  Github,
-  Linkedin,
-  Twitter,
-  Phone,
-  Facebook,
-} from "lucide-react";
+import { FolderCode, Menu, X, Github, Phone } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,19 +48,11 @@ const Navbar = () => {
             </a>
             <a
               href="https://wa.me/22968266565"
-              target="blank"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-base-content/70 hover:text-secondary transition-colors"
             >
               <Phone className="w-5 h-5" />
-            </a>
-            <a
-              href=""
-              target="blank"
-              rel="noopener noreferrer"
-              className="text-base-content/70 hover:text-secondary transition-colors"
-            >
-              <Facebook className="w-5 h-5" />
             </a>
           </div>
 
@@ -107,28 +90,22 @@ const Navbar = () => {
           {/* Social Links Mobile */}
           <div className="flex justify-center space-x-6 pt-4 border-t border-base-200">
             <a
-              href="https://github.com"
+              href="https://github.com/OnelKND"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 hover:bg-base-200 rounded-lg transition-colors"
+              aria-label="GitHub"
             >
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://wa.me/22968266565"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 hover:bg-base-200 rounded-lg transition-colors"
+              aria-label="WhatsApp"
             >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 hover:bg-base-200 rounded-lg transition-colors"
-            >
-              <Twitter className="w-5 h-5" />
+              <Phone className="w-5 h-5" />
             </a>
           </div>
         </div>

@@ -82,6 +82,36 @@ a[href^="#"] {
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes blob-morph {
+  0%, 100% {
+    border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%;
+  }
+  33% {
+    border-radius: 60% 40% 40% 60% / 60% 45% 55% 40%;
+  }
+  66% {
+    border-radius: 40% 60% 55% 45% / 35% 60% 40% 65%;
+  }
+}
+
+@keyframes blink-caret {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 /* Animation utility classes */
 .animate-fadeInUp {
   animation: fadeInUp 0.6s ease-out forwards;
@@ -101,6 +131,18 @@ a[href^="#"] {
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-blob-morph {
+  animation: blob-morph 10s ease-in-out infinite;
+}
+
+.animate-blink-caret {
+  animation: blink-caret 1s step-end infinite;
 }
 
 /* Stagger delays for children */

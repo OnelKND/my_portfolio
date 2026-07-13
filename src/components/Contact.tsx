@@ -27,7 +27,7 @@ const Contact = () => {
       icon: <MapPin className="w-5 h-5" />,
       label: "Localisation",
       value: "Cotonou, Bénin",
-      href: "#",
+      href: "https://www.google.com/maps/search/?api=1&query=Cotonou,+Benin",
     },
   ];
 

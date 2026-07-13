@@ -1,4 +1,4 @@
-import { FolderCode, Github, Mail, Facebook } from "lucide-react";
+import { FolderCode, Github, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,7 +12,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: <Github className="w-5 h-5" />, href: "https://github.com/OnelKND", label: "GitHub" },
-    { icon: <Facebook className="w-5 h-5" />, href: "#", label: "Facebook" },
+    { icon: <Phone className="w-5 h-5" />, href: "https://wa.me/22968266565", label: "WhatsApp" },
     { icon: <Mail className="w-5 h-5" />, href: "mailto:angekounde3@gmail.com", label: "Email" },
   ];
 

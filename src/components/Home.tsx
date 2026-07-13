@@ -1,9 +1,37 @@
 import { useState, useEffect } from "react"; // 1. Importation des hooks React
-import { Mail, Github, ArrowDown } from "lucide-react";
-import img from "../assets/img.png";
+import { Mail, Github, ArrowDown, Code2 } from "lucide-react";
+
+const codeLines = [
+  "const dev = {",
+  "  name: 'Ange-Onel KOUNDE',",
+  "  role: 'Full-Stack Developer',",
+  "  stack: ['React', 'Node.js', 'TS'],",
+  "  passion: true,",
+  "};",
+];
+
+const TICK_MS = 35;
+const PAUSE_TICKS = Math.round(2000 / TICK_MS);
+
+// Precomputed once: each frame is the full lines array at that reveal step.
+const codeFrames: string[][] = (() => {
+  const frames: string[][] = [];
+  const current: string[] = [];
+  codeLines.forEach((full, li) => {
+    current[li] = "";
+    for (let c = 1; c <= full.length; c++) {
+      current[li] = full.slice(0, c);
+      frames.push([...current]);
+    }
+  });
+  return frames;
+})();
+
+const cycleLength = codeFrames.length + PAUSE_TICKS;
 
 const Home = () => {
   const [salutation, setSalutation] = useState("Bonjour");
+  const [tick, setTick] = useState(0);
 
   useEffect(() => {
     const heure = new Date().getHours();
@@ -13,6 +41,15 @@ const Home = () => {
       setSalutation("Bonsoir");
     }
   }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTick((t) => (t + 1) % cycleLength);
+    }, TICK_MS);
+    return () => clearInterval(id);
+  }, []);
+
+  const displayedLines = codeFrames[Math.min(tick, codeFrames.length - 1)];
 
   return (
     <section
@@ -86,32 +123,54 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Right Content - Profile Image */}
+          {/* Right Content - Animated Code Visual */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative">
-              {/* Decorative elements */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-secondary via-primary to-secondary rounded-full opacity-20 blur-3xl"></div>
+            <div className="relative w-72 sm:w-96 lg:w-[26rem]">
+              {/* Decorative morphing blob */}
+              <div className="absolute -inset-6 bg-gradient-to-r from-secondary via-primary to-secondary opacity-20 blur-3xl animate-blob-morph"></div>
 
-              <div className="relative">
-                <img
-                  src={img}
-                  alt="KOUNDE Ange-Onel - Développeur Full-Stack"
-                  className="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-cover rounded-full border-4 border-secondary shadow-2xl"
-                />
+              {/* Floating tech icons */}
+              <div className="absolute -top-6 left-6 bg-base-100 p-2.5 rounded-xl shadow-lg animate-float">
+                <Code2 className="w-5 h-5 text-secondary" />
+              </div>
+              <div
+                className="absolute top-8 -right-6 bg-base-100 p-2.5 rounded-xl shadow-lg animate-float"
+                style={{ animationDelay: "1s" }}
+              >
+                <Github className="w-5 h-5 text-secondary" />
+              </div>
 
-                {/* Floating badges */}
-                <div className="absolute -bottom-4 -left-4 bg-base-100 p-3 rounded-xl shadow-lg">
-                  <div className="text-center">
-                    <span className="text-2xl font-bold text-secondary">4+</span>
-                    <p className="text-xs text-base-content/60">Années d'exp</p>
-                  </div>
+              {/* Code editor card */}
+              <div className="relative bg-base-100 rounded-2xl shadow-2xl border border-base-300 overflow-hidden">
+                <div className="flex items-center gap-1.5 px-4 py-3 bg-base-200 border-b border-base-300">
+                  <span className="w-3 h-3 rounded-full bg-red-400"></span>
+                  <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
+                  <span className="w-3 h-3 rounded-full bg-green-400"></span>
                 </div>
+                <pre className="p-6 text-sm sm:text-base font-mono leading-relaxed min-h-[220px] text-left overflow-x-auto">
+                  {displayedLines.map((line, i) => (
+                    <div key={i}>
+                      <span className="text-base-content/80">{line}</span>
+                      {i === displayedLines.length - 1 && (
+                        <span className="inline-block w-2 h-4 bg-secondary ml-0.5 animate-blink-caret align-middle"></span>
+                      )}
+                    </div>
+                  ))}
+                </pre>
+              </div>
 
-                <div className="absolute -top-4 -right-4 bg-base-100 p-3 rounded-xl shadow-lg">
-                  <div className="text-center">
-                    <span className="text-2xl font-bold text-secondary">20+</span>
-                    <p className="text-xs text-base-content/60">Projets</p>
-                  </div>
+              {/* Floating badges */}
+              <div className="absolute -bottom-4 -left-4 bg-base-100 p-3 rounded-xl shadow-lg">
+                <div className="text-center">
+                  <span className="text-2xl font-bold text-secondary">4+</span>
+                  <p className="text-xs text-base-content/60">Années d'exp</p>
+                </div>
+              </div>
+
+              <div className="absolute -top-4 -right-4 bg-base-100 p-3 rounded-xl shadow-lg">
+                <div className="text-center">
+                  <span className="text-2xl font-bold text-secondary">20+</span>
+                  <p className="text-xs text-base-content/60">Projets</p>
                 </div>
               </div>
             </div>
