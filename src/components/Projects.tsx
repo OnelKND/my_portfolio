@@ -7,6 +7,7 @@ import img2 from "../assets/projects/2.png";
 import img3 from "../assets/projects/3.png";
 import img4 from "../assets/projects/4.png";
 import img5 from "../assets/projects/5.png";
+import img6 from "../assets/projects/6.png";
 
 interface Project {
   id: number;
@@ -64,7 +65,7 @@ const projects: Project[] = [
     description: "Site web officiel de l’entreprise HIMAO Group, présentant ses services et projets.",
     technologies: ["NextJS", "DaisyUI", "TailwindCSS"],
     repoLink: "https://github.com/OnelKND/ia_perso",
-    image: img5,
+    image: img6,
   },
 ];
 
