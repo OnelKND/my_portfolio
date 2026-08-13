@@ -5,11 +5,11 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Accueil", href: "#home" },
-    { name: "À propos", href: "#About" },
-    { name: "Services", href: "#services" },
-    { name: "Projets", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Accueil", href: "/#home" },
+    { name: "À propos", href: "/#about" },
+    { name: "Services", href: "/#services" },
+    { name: "Projets", href: "/#projects" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center font-bold text-2xl">
+          <a href="/" className="flex items-center font-bold text-2xl">
             <FolderCode className="mr-2 text-secondary" />
             NEL
             <span className="text-secondary">DEV</span>
