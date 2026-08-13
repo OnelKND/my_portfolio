@@ -35,7 +35,7 @@ const aboutSections = [
 
 const About = () => {
   return (
-    <section id="About" className="py-16 bg-base-200">
+    <section id="about" className="py-16 bg-base-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Title title="À propos de moi" />
 
@@ -48,7 +48,8 @@ const About = () => {
 
               <img
                 src={img}
-                alt="KOUNDE Ange-Onel - Développeur Full-Stack"
+                alt="KOUNDE Ange-Onel - Développeur web et mobile Full-Stack à Cotonou, Bénin"
+                loading="lazy"
                 className="relative w-80 h-96 lg:w-96 lg:h-[450px] object-cover rounded-2xl shadow-2xl border-4 border-secondary/30"
               />
             </div>
@@ -58,15 +59,17 @@ const About = () => {
           <div className="space-y-6">
             <p className="text-base-content/70 leading-relaxed">
               Je m'appelle <strong>KOUNDE Ange-Onel</strong>, développeur
-              Full-Stack basé au Bénin. Fort de{" "}
+              web et mobile Full-Stack basé à <strong>Cotonou, Bénin</strong>. Fort de{" "}
               <strong>4 ans d'expérience</strong>, je transforme vos idées en
-              applications web modernes, performantes et orientées utilisateur.
+              sites web et applications mobiles modernes, performantes et
+              orientées utilisateur.
             </p>
 
             <p className="text-base-content/70 leading-relaxed">
-              Mon approche combine expertise technique et sensibilité design
-              pour créer des solutions qui non seulement fonctionnent, mais
-              aussi rendent l'expérience utilisateur agréable.
+              J'accompagne les entreprises et particuliers au Bénin dans leur
+              transformation digitale, en combinant expertise technique et
+              sensibilité design pour créer des solutions qui non seulement
+              fonctionnent, mais aussi rendent l'expérience utilisateur agréable.
             </p>
 
             {/* Highlights */}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import Title from "./Title";
 
 import img1 from "../assets/projects/1.png";
@@ -14,7 +14,8 @@ interface Project {
   title: string;
   description: string;
   technologies: string[];
-  repoLink: string;
+  repoLink?: string;
+  siteLink?: string;
   image: string;
 }
 
@@ -64,7 +65,7 @@ const projects: Project[] = [
     title: "Site Web d'HIMAO Group",
     description: "Site web officiel de l’entreprise HIMAO Group, présentant ses services et projets.",
     technologies: ["NextJS", "DaisyUI", "TailwindCSS"],
-    repoLink: "https://github.com/OnelKND/ia_perso",
+    siteLink: "https://himaogroup.netlify.app",
     image: img6,
   },
 ];
@@ -121,7 +122,8 @@ const Projects = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-base-200/30 to-transparent z-10" />
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} - projet web réalisé par NelDev, développeur à Cotonou`}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
@@ -149,15 +151,27 @@ const Projects = () => {
 
                 {/* Links */}
                 <div className="flex gap-3">
-                  <a
-                    href={project.repoLink}
-                    className="btn btn-secondary btn-sm flex-1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Github className="w-4 h-4" />
-                    Voir sur GitHub
-                  </a>
+                  {project.siteLink ? (
+                    <a
+                      href={project.siteLink}
+                      className="btn btn-secondary btn-sm flex-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Voir le site
+                    </a>
+                  ) : (
+                    <a
+                      href={project.repoLink}
+                      className="btn btn-secondary btn-sm flex-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Github className="w-4 h-4" />
+                      Voir sur GitHub
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

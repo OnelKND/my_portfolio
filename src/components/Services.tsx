@@ -51,11 +51,11 @@ const services = [
   {
     id: 1,
     icon: <Globe className="w-8 h-8" />,
-    title: "Développement Web",
-    description: "Création de sites web modernes et responsives avec les dernières technologies. Applications web performantes et optimisées pour le SEO.",
+    title: "Développement Web et Mobile",
+    description: "Création de sites web et d'applications mobiles modernes et responsives avec les dernières technologies, pour entreprises et particuliers à Cotonou et dans tout le Bénin.",
     features: [
       "Sites vitrines et e-commerce",
-      "Applications web React/Next.js",
+      "Applications web et mobiles React/Next.js",
       "API REST et intégration",
     ],
   },
@@ -88,11 +88,12 @@ const Services = () => {
   return (
     <section id="services" className="py-16 bg-base-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Title title="Services" />
+        <Title title="Services de développement web et mobile à Cotonou" />
 
         <p className="text-center text-base-content/70 mb-12 max-w-2xl mx-auto">
-          Des solutions complètes pour répondre à vos besoins numériques.
-          Je vous accompagne de la conception à la mise en ligne de votre projet.
+          Des solutions complètes pour répondre à vos besoins numériques à
+          Cotonou et dans tout le Bénin. Je vous accompagne de la conception
+          à la mise en ligne de votre projet web ou mobile.
         </p>
 
         {/* Services Cards */}
@@ -146,6 +147,7 @@ const Services = () => {
                       <img
                         src={skill.image}
                         alt={skill.name}
+                        loading="lazy"
                         className="w-6 h-6 object-contain"
                       />
                       <span className="text-sm font-medium">{skill.name}</span>

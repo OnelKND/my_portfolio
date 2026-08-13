@@ -68,12 +68,17 @@ const Home = () => {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
               {salutation}, je suis{" "}
               <span className="text-secondary block mt-2">KOUNDE Ange-Onel</span>
+              <span className="block text-xl sm:text-2xl lg:text-3xl font-semibold mt-2 text-base-content/80">
+                Développeur web et mobile à Cotonou, Bénin
+              </span>
             </h1>
 
             <p className="text-lg sm:text-xl text-base-content/70 max-w-xl mx-auto lg:mx-0">
-              Développeur web full-stack basé à Cotonou, Bénin, avec{" "}
+              Développeur web et mobile full-stack basé à Cotonou, Bénin, avec{" "}
               <span className="font-semibold text-primary">4 ans d'expérience</span>.
-              Je crée des applications web modernes, performantes et orientées utilisateur.
+              Je conçois des sites web, applications mobiles et solutions sur mesure,
+              modernes, performantes et orientées utilisateur, pour les entreprises et
+              particuliers au Bénin.
             </p>
 
             {/* Tech Stack Badge */}
