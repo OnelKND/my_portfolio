@@ -58,6 +58,14 @@ const projects: Project[] = [
     repoLink: "https://github.com/OnelKND/ia_perso",
     image: img5,
   },
+  {
+    id: 6,
+    title: "Site Web d'HIMAO Group",
+    description: "Site web officiel de l’entreprise HIMAO Group, présentant ses services et projets.",
+    technologies: ["NextJS", "DaisyUI", "TailwindCSS"],
+    repoLink: "https://github.com/OnelKND/ia_perso",
+    image: img5,
+  },
 ];
 
 const Projects = () => {
