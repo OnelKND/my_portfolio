@@ -22,11 +22,11 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Abonnement Newsletter",
-    description: "Application d’inscription et de gestion d’une newsletter avec envoi automatisé d’e-mails.",
-    technologies: ["React", "Node.js", "Tailwind CSS", "MailChimp"],
-    repoLink: "https://github.com/OnelKND/newsletter",
-    image: img1,
+    title: "Site Web d'HIMAO Group",
+    description: "Site web officiel de l’entreprise HIMAO Group, présentant ses services et projets.",
+    technologies: ["NextJS", "DaisyUI", "TailwindCSS"],
+    siteLink: "https://himaogroup.netlify.app",
+    image: img6,
   },
   {
     id: 2,
@@ -62,11 +62,11 @@ const projects: Project[] = [
   },
   {
     id: 6,
-    title: "Site Web d'HIMAO Group",
-    description: "Site web officiel de l’entreprise HIMAO Group, présentant ses services et projets.",
-    technologies: ["NextJS", "DaisyUI", "TailwindCSS"],
-    siteLink: "https://himaogroup.netlify.app",
-    image: img6,
+    title: "Abonnement Newsletter",
+    description: "Application d’inscription et de gestion d’une newsletter avec envoi automatisé d’e-mails.",
+    technologies: ["React", "Node.js", "Tailwind CSS", "MailChimp"],
+    repoLink: "https://github.com/OnelKND/newsletter",
+    image: img1,
   },
 ];
 
